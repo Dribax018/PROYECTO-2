@@ -66,8 +66,8 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] private float forwardSpeed = 3f;
     [Header("seguimiento")]
     [SerializeField] private float followspeed = 8f;
-    //[SerializeField] private float altura = 8f;
-    //[SerializeField] private float distancia = 10f;
+    [SerializeField] private float altura = 8f;
+    [SerializeField] private float distancia = 10f;
     private float cameraZ;
     private void Start()
     {
@@ -78,6 +78,6 @@ public class CameraFollow : MonoBehaviour
         cameraZ += forwardSpeed * Time.deltaTime;
         float targetX = player.position.x;
         float newX = Mathf.Lerp(transform.position.x,targetX,followspeed * Time.deltaTime);
-        //transform.position = new Vector3(newX, altura, cameraZ);
+        transform.position = new Vector2(altura, cameraZ);
     }
 }
