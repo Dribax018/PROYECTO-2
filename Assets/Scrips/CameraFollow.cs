@@ -1,83 +1,32 @@
-//using UnityEditor.Experimental.GraphView;
-//using UnityEngine;
-
-//public class CameraFollow : MonoBehaviour
-//{
-//    [Header("Jugador")]
-//    [SerializeField] private Transform jugador;
-
-//    [Header("Camara")]
-//    [SerializeField] private Vector3 offset = new Vector3(6f, 8f, -6f);
-//    [SerializeField] private float suavizado = 0.15f;
-
-//    [Header("Seguimiento por cubos")]
-//    [SerializeField] private bool soloAvanza = true;
-//    private Vector3 velocidad;
-//    private float zMaxima;
-//    private float alturaInicialJugador;
-//    public float rapidez = 5f;
-
-//    private void Start()
-//    {
-//        if (jugador == null)
-//        {
-//            Debug.LogError("No has asignado el jugador a CameraFollow.");
-//            return;
-//        }
-
-//        zMaxima = jugador.position.z;
-//        alturaInicialJugador = jugador.position.y;
-//    }
-
-//    private void LateUpdate()
-//    {
-//        if (jugador == null)
-//            return;
-
-//        float posicionZ = jugador.position.z;
-//        if (soloAvanza)
-//        {
-//            zMaxima = Mathf.Max(zMaxima, jugador.position.z);
-//            posicionZ = zMaxima;
-//        }
-
-//        Vector3 posicionJugador = new Vector3(
-//            jugador.position.x,
-//            alturaInicialJugador,
-//            posicionZ
-//        );
-
-//        Vector3 posicionDeseada = posicionJugador + offset;
-
-//        transform.position = Vector3.SmoothDamp(
-//            transform.position,
-//            posicionDeseada,
-//            ref velocidad,
-//            suavizado
-//        );
-//        transform.Translate(Vector3.right * rapidez * Time.deltaTime);
-//    }
-//}
 using UnityEngine;
-public class CameraFollow : MonoBehaviour
+
+public class CrossyRoadCompleteCamera : MonoBehaviour
 {
-    [SerializeField] private Transform player;
-    [Header("avance")]
-    [SerializeField] private float forwardSpeed = 3f;
-    [Header("seguimiento")]
-    [SerializeField] private float followspeed = 8f;
-    [SerializeField] private float altura = 8f;
-    [SerializeField] private float distancia = 10f;
-    private float cameraZ;
-    private void Start()
+    public Transform target;        
+    public Vector3 offset;           
+    public float autoMoveSpeed = 1.5f; 
+    public float smoothSpeedX = 5f;    
+    public float smoothSpeedZ = 5f;   
+
+    void Start()
     {
-        cameraZ = transform.position.z;
+        if (offset == Vector3.zero && target != null)
+        {
+            offset = transform.position - target.position;
+        }
     }
-    private void LateUpdate()
+
+    void LateUpdate()
     {
-        cameraZ += forwardSpeed * Time.deltaTime;
-        float targetX = player.position.x;
-        float newX = Mathf.Lerp(transform.position.x,targetX,followspeed * Time.deltaTime);
-        transform.position = new Vector2(altura, cameraZ);
+        if (target == null) return;
+        float targetX = target.position.x + offset.x;
+        float nextX = Mathf.Lerp(transform.position.x, targetX, smoothSpeedX * Time.deltaTime);
+        float nextZ = transform.position.z + (autoMoveSpeed * Time.deltaTime);
+        float targetZ = target.position.z + offset.z;
+        if (targetZ > nextZ)
+        {
+            nextZ = Mathf.Lerp(nextZ, targetZ, smoothSpeedZ * Time.deltaTime);
+        }
+        transform.position = new Vector3(nextX, target.position.y + offset.y, nextZ);
     }
 }
