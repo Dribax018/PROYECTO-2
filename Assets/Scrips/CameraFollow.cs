@@ -9,11 +9,9 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] private Vector3 offset = new Vector3(6f, 8f, -6f);
     [SerializeField] private float suavizado = 0.15f;
 
-    [Header("Estilo Crossy Road")]
+    [Header("Seguimiento por cubos")]
     [SerializeField] private bool soloAvanza = true;
-
     private Vector3 velocidad;
-
     private float zMaxima;
     private float alturaInicialJugador;
 
@@ -26,9 +24,6 @@ public class CameraFollow : MonoBehaviour
         }
 
         zMaxima = jugador.position.z;
-
-        // Guardamos la altura normal del jugador.
-        // Así la cámara NO seguirá el pequeño salto.
         alturaInicialJugador = jugador.position.y;
     }
 
@@ -38,9 +33,6 @@ public class CameraFollow : MonoBehaviour
             return;
 
         float posicionZ = jugador.position.z;
-
-        // Crossy Road:
-        // la cámara puede avanzar pero no volver hacia atrás.
         if (soloAvanza)
         {
             zMaxima = Mathf.Max(zMaxima, jugador.position.z);

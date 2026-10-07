@@ -4,71 +4,54 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private PlayerInputReader inputReader;
-
-    [Header("Movimiento")]
-    [SerializeField] private float distanciaPaso = 1f;
-    [SerializeField] private float duracionMovimiento = 0.15f;
-    [SerializeField] private float alturaSalto = 0.35f;
+    [SerializeField] private float distancia = 1f;
+    [SerializeField] private float duracion = 0.15f;
+    [SerializeField] private float salto = 0.3f;
+    [SerializeField] private LayerMask obstaculos;
 
     private bool moviendose;
-
     private void OnEnable()
     {
-        inputReader.MovePressed += HandleMove;
+        inputReader.MovePressed += MoverJugador;
     }
-
     private void OnDisable()
     {
-        inputReader.MovePressed -= HandleMove;
+        inputReader.MovePressed -= MoverJugador;
     }
-
-    private void HandleMove(Vector2 input)
+    private void MoverJugador(Vector2 input)
     {
         if (moviendose)
             return;
-
-        Vector3 direccion = new Vector3(input.x, 0, input.y);
-
-        if (direccion != Vector3.zero)
+        Vector3 direccion;
+        if (Mathf.Abs(input.x) > Mathf.Abs(input.y))
         {
-            StartCoroutine(Mover(direccion));
+            direccion = new Vector3(Mathf.Sign(input.x), 0, 0);
         }
+        else
+        {
+            direccion = new Vector3(0, 0, Mathf.Sign(input.y));
+        }
+        if (Physics.Raycast(transform.position, direccion, distancia, obstaculos))
+            return;
+        StartCoroutine(Mover(direccion));
     }
-
     private IEnumerator Mover(Vector3 direccion)
     {
         moviendose = true;
-
-        Vector3 posicionInicial = transform.position;
-
-        Vector3 posicionFinal = posicionInicial + direccion.normalized * distanciaPaso;
-
-        // Giramos hacia la dirección de movimiento
+        Vector3 inicio = transform.position;
+        Vector3 final = inicio + direccion * distancia;
         transform.rotation = Quaternion.LookRotation(direccion);
-
-        float tiempo = 0f;
-
-        while (tiempo < duracionMovimiento)
+        float tiempo = 0;
+        while (tiempo < duracion)
         {
             tiempo += Time.deltaTime;
-
-            float porcentaje = tiempo / duracionMovimiento;
-
-            Vector3 posicion = Vector3.Lerp(posicionInicial, posicionFinal, porcentaje
-                );
-
-            // Salto estilo Crossy Road
-            float salto = Mathf.Sin(porcentaje * Mathf.PI) * alturaSalto;
-
-            posicion.y += salto;
-
+            float porcentaje = tiempo / duracion;
+            Vector3 posicion = Vector3.Lerp(inicio, final, porcentaje);
+            posicion.y += Mathf.Sin(porcentaje * Mathf.PI) * salto;
             transform.position = posicion;
-
             yield return null;
         }
-
-        transform.position = posicionFinal;
-
+        transform.position = final;
         moviendose = false;
     }
 }

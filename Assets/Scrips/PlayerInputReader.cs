@@ -2,43 +2,28 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(PlayerInput))]
 public class PlayerInputReader : MonoBehaviour
 {
-    public Vector2 MoveValue { get; private set; }
-
     public event Action<Vector2> MovePressed;
-
     private PlayerInput playerInput;
-
-    private const string MoveAction = "move";
-
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
     }
-
     private void OnEnable()
     {
-        playerInput.onActionTriggered += HandleAction;
+        playerInput.onActionTriggered += LeerInput;
     }
-
     private void OnDisable()
     {
-        playerInput.onActionTriggered -= HandleAction;
-        MoveValue = Vector2.zero;
+        playerInput.onActionTriggered -= LeerInput;
     }
-
-    private void HandleAction(InputAction.CallbackContext ctx)
+    private void LeerInput(InputAction.CallbackContext context)
     {
-        if (ctx.action.name != MoveAction)
-            return;
-
-        MoveValue = ctx.ReadValue<Vector2>();
-
-        if (ctx.performed)
+        if (context.action.name == "move" && context.performed)
         {
-            MovePressed?.Invoke(MoveValue);
+            Vector2 direccion = context.ReadValue<Vector2>();
+            MovePressed?.Invoke(direccion);
         }
     }
 }

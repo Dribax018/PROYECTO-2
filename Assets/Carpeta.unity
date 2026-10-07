@@ -1475,9 +1475,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   inputReader: {fileID: 844062518}
-  distanciaPaso: 1
-  duracionMovimiento: 0.15
-  alturaSalto: 0.35
+  distancia: 1
+  duracion: 0.15
+  salto: 0.3
+  obstaculos:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!114 &844062518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1568,6 +1571,11 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 2.0796156, z: 1}
   m_Center: {x: 0, y: 1.0337895, z: 0}
+--- !u!4 &844062522 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 80764a3ea12655c4e875b7f84db72e9b, type: 3}
+  m_PrefabInstance: {fileID: 185360100}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &915304509
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3385,7 +3393,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d8869613fbb40042b14ed7ddbf48789, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraFollow
-  jugador: {fileID: 0}
+  jugador: {fileID: 844062522}
   offset: {x: 6, y: 8, z: -6}
   suavizado: 0.15
   soloAvanza: 1
