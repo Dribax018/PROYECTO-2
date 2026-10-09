@@ -1,32 +1,68 @@
 using UnityEngine;
 
-public class CrossyRoadCompleteCamera : MonoBehaviour
+public class CameraFollow : MonoBehaviour
 {
-    public Transform target;        
-    public Vector3 offset;           
-    public float autoMoveSpeed = 1.5f; 
-    public float smoothSpeedX = 5f;    
-    public float smoothSpeedZ = 5f;   
+    [Header("Vista isométrica")]
+    [SerializeField] private float pitch = 30f;
+    [SerializeField] private float yaw = 45f;
+    [SerializeField] private float distance = 20f;
+    [Header("Seguimiento")]
+    [SerializeField] private float smoothTime = 0.25f;
+    [SerializeField] private bool followSideways = true;
+    [Header("Avance infinito")]
+    [SerializeField] private float forwardSpeed= 5f;
 
-    void Start()
+    private Vector3 focusPoint;
+    private Vector3 velocity;
+    private float maxForwardZ;
+
+    private void Awake()
     {
-        if (offset == Vector3.zero && target != null)
+        transform.rotation = Quaternion.Euler(pitch, yaw, 0f);
+    }
+
+    private void OnEnable()
+    {
+        PlayerMovement.OnPlayerMoved += HandlePlayerMoved;
+    }
+    private void OnDisable()
+    {
+        PlayerMovement.OnPlayerMoved -= HandlePlayerMoved;
+    }
+    private void Start()
+    {
+        var player = FindFirstObjectByType<PlayerMovement>();
+        if (player != null)
         {
-            offset = transform.position - target.position;
+            focusPoint = player.transform.position;
+            maxForwardZ = focusPoint.z;
+            transform.position = focusPoint - transform.forward * distance;
         }
     }
 
-    void LateUpdate()
+
+    private void HandlePlayerMoved(Vector3 newPosition)
     {
-        if (target == null) return;
-        float targetX = target.position.x + offset.x;
-        float nextX = Mathf.Lerp(transform.position.x, targetX, smoothSpeedX * Time.deltaTime);
-        float nextZ = transform.position.z + (autoMoveSpeed * Time.deltaTime);
-        float targetZ = target.position.z + offset.z;
-        if (targetZ > nextZ)
-        {
-            nextZ = Mathf.Lerp(nextZ, targetZ, smoothSpeedZ * Time.deltaTime);
-        }
-        transform.position = new Vector3(nextX, target.position.y + offset.y, nextZ);
+        maxForwardZ = Mathf.Max(maxForwardZ, newPosition.z);
+        focusPoint = new Vector3
+        (
+            followSideways ? newPosition.x : focusPoint.x,
+            0f,
+            maxForwardZ
+        );
+    }
+
+    private void LateUpdate()
+    {
+        maxForwardZ += forwardSpeed * Time.deltaTime;
+        focusPoint.z = maxForwardZ;
+        Vector3 targetPos = focusPoint - transform.forward * distance;
+        transform.position = Vector3.SmoothDamp
+        (
+            transform.position,
+            targetPos,
+            ref velocity,
+            smoothTime
+        );
     }
 }

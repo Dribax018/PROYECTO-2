@@ -4400,11 +4400,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d8869613fbb40042b14ed7ddbf48789, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraFollow
-  target: {fileID: 867975653093179771, guid: 5b811e3759981264884c0c63a398180d, type: 3}
-  offset: {x: 0, y: 0, z: 0}
-  autoMoveSpeed: 1.5
-  smoothSpeedX: 5
-  smoothSpeedZ: 5
+  pitch: 35
+  yaw: -45
+  distance: 20
+  smoothTime: 0.25
+  followSideways: 1
 --- !u!1 &1908213479 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c6ad8ecb5062bca4b9ea423eceb1c2d5, type: 3}

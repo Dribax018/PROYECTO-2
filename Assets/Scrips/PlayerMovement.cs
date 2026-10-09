@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public static event System.Action<Vector3> OnPlayerMoved;
     [SerializeField] private PlayerInputReader inputReader;
     [SerializeField] private float distancia = 1f;
     [SerializeField] private float duracion = 0.15f;
@@ -40,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
         moviendose = true;
         Vector3 inicio = transform.position;
         Vector3 final = inicio + direccion * distancia;
+        OnPlayerMoved?.Invoke(final);
         transform.rotation = Quaternion.LookRotation(direccion);
         float tiempo = 0;
         while (tiempo < duracion)
