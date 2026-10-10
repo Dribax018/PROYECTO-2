@@ -40,7 +40,6 @@ public class CameraFollow : MonoBehaviour
         }
     }
 
-
     private void HandlePlayerMoved(Vector3 newPosition)
     {
         maxForwardZ = Mathf.Max(maxForwardZ, newPosition.z);
