@@ -3013,7 +3013,7 @@ MonoBehaviour:
   distance: 20
   smoothTime: 0.25
   followSideways: 1
-  forwardSpeed: 0
+  forwardSpeed: 2.5
 --- !u!1001 &382474722
 PrefabInstance:
   m_ObjectHideFlags: 0
