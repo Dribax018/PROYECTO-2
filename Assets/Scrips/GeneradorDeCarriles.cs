@@ -1,16 +1,26 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class GeneradorDeCarriles : MonoBehaviour
+public class GeneradorDeCarriles : MonoBehaviour,ICarril
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private GameObject[] terreno;
+    [SerializeField] private Transform spawn;
+
+    public void inicializar()
     {
-        
+       
     }
 
-    // Update is called once per frame
-    void Update()
+    public void r()
     {
-        
+       
     }
+
+    private void SpawnTerr()
+    {
+        int index = Random.Range(0, terreno.Length);
+        Instantiate(terreno[index], spawn.position, spawn.rotation);
+    }
+
+
 }
