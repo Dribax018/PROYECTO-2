@@ -58,6 +58,7 @@ public class LaneGenerator : MonoBehaviour
 
     private void Update()
     {
+        if (player == null) return;
         int playerRow = Mathf.RoundToInt(player.position.z / tileSize);
         if (playerRow > Progress)
         {
@@ -102,9 +103,11 @@ public class LaneGenerator : MonoBehaviour
         foreach (LaneConfig config in laneConfigs)
         {
             if (config == null || row < config.minRow) continue;
-            if (config.type == lastType && sameTypeCount >= config.maxConsecutive) continue; 
+            if (config.type == lastType && sameTypeCount >= config.maxConsecutive) continue;
+            //if (config.type == lastType && sameTypeCount <= config.minConsecutive) continue;
             candidates.Add(config);
             totalWeight += config.weight;
+
         }
 
         if (candidates.Count == 0) return Register(safeConfig);

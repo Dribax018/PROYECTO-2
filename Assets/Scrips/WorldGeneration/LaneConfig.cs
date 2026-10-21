@@ -23,6 +23,8 @@ public class LaneConfig : ScriptableObject
     [Min(0)] public int minRow = 0;
     [Tooltip("Máximo de carriles seguidos de este tipo")]
     [Min(1)] public int maxConsecutive = 3;
+    //[Tooltip("Mínimo de carriles seguidos de este tipo")]
+    //[Min(1)] public int minConsecutive = 1;
 
     [Header("Obstáculos (césped)")]
     public GameObject[] obstaclePrefabs;

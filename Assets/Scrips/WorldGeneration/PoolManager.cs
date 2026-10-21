@@ -5,8 +5,8 @@ public class PoolManager : MonoBehaviour
 {
     public static PoolManager Instance { get; private set; }
 
-    [SerializeField] private int defaultCapacity = 10;
-    [SerializeField] private int maxSize = 50;
+    [SerializeField] private int defaultCapacity = 20;
+    [SerializeField] private int maxSize = 70;
 
     private readonly Dictionary<GameObject, ObjectPool<GameObject>> pools =
         new Dictionary<GameObject, ObjectPool<GameObject>>();
