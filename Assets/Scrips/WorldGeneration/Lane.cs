@@ -1,11 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-
-/// <summary>
-/// Un carril (fila) del mundo. Va en el prefab del carril, junto al suelo y a los dos
-/// puntos de aparición. LaneGenerator lo configura con Init() y él se encarga de
-/// sus obstáculos (césped) o de su tráfico (carretera).
-/// <summary>
 public class Lane : MonoBehaviour
 {
     [Header("Puntos de aparición (en los extremos, fuera de la vista y a la altura del suelo)")]
@@ -19,15 +13,14 @@ public class Lane : MonoBehaviour
     private LaneConfig config;
     private float tileSize;
     private int columnsEachSide;
+
+    // Tráfico
     private Transform spawnPoint;
     private Transform exitPoint;
     private float speed;
     private float intervalMultiplier = 1f;
     private float spawnTimer;
     private readonly List<LaneVehicle> activeVehicles = new List<LaneVehicle>();
-
-    /// <param name="safeColumn">Columna que debe quedar libre en esta fila.</param>
-    /// <param name="nextSafeColumn">Columna libre de la fila siguiente (a ±1 de safeColumn).</param>
     public void Init(LaneConfig config, int row, float tileSize, int columnsEachSide,
                      float speedMultiplier, float intervalMultiplier,
                      int safeColumn, int nextSafeColumn)
@@ -102,14 +95,12 @@ public class Lane : MonoBehaviour
         PrewarmVehicles();
         spawnTimer = NextInterval();
     }
-
     private float NextInterval()
     {
         float interval = Random.Range(config.spawnIntervalRange.x, config.spawnIntervalRange.y) * intervalMultiplier;
         float minInterval = config.minGapUnits / Mathf.Max(speed, 0.01f);
         return Mathf.Max(interval, minInterval);
     }
-
     private void PrewarmVehicles()
     {
         Vector3 start = spawnPoint.position;
@@ -146,8 +137,6 @@ public class Lane : MonoBehaviour
         activeVehicles.Remove(vehicle);
         PoolManager.Instance.Release(vehicle.gameObject);
     }
-
-    /// Retira el carril: devuelve sus vehículos al pool (no son hijos suyos) y lo destruye.
     public void Retire()
     {
         foreach (LaneVehicle vehicle in activeVehicles)

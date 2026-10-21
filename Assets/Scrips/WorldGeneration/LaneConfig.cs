@@ -9,12 +9,6 @@ public enum LaneType
     Grass,
     Road
 }
-
-/// <summary>
-/// Datos de una variante de carril (carretera lenta, carretera rápida, césped con árboles...).
-/// Crear desde: Assets > Create > Lanes > Lane Config.
-/// Las variantes se crean cambiando valores, no creando clases nuevas.
-/// </summary>
 [CreateAssetMenu(menuName = "Lanes/Lane Config", fileName = "NewLaneConfig")]
 public class LaneConfig : ScriptableObject
 {

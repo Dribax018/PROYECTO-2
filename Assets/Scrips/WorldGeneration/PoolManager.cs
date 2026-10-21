@@ -1,45 +1,71 @@
+using System.Collections.Generic;
 using UnityEngine;
-
-/// <summary>
-/// Tipos de carril. Para añadir Agua o Vía de tren, añade el valor aquí
-/// y un nuevo case en Lane.Init().
-/// </summary>
-public enum LaneType
+using UnityEngine.Pool;
+public class PoolManager : MonoBehaviour
 {
-    Grass,
-    Road
-}
+    public static PoolManager Instance { get; private set; }
 
-/// <summary>
-/// Datos de una variante de carril (carretera lenta, carretera rápida, césped con árboles...).
-/// Crear desde: Assets > Create > Lanes > Lane Config.
-/// Las variantes se crean cambiando valores, no creando clases nuevas.
-/// </summary>
-[CreateAssetMenu(menuName = "Lanes/Lane Config", fileName = "NewLaneConfig")]
-public class LaneConfig : ScriptableObject
-{
-    [Header("General")]
-    public LaneType type;
-    [Tooltip("Prefab del carril: suelo + script Lane + puntos de aparición")]
-    public Lane lanePrefab;
+    [SerializeField] private int defaultCapacity = 10;
+    [SerializeField] private int maxSize = 50;
 
-    [Header("Reglas de aparición")]
-    [Min(0f)] public float weight = 1f;
-    [Tooltip("Fila a partir de la cual puede aparecer este carril")]
-    [Min(0)] public int minRow = 0;
-    [Tooltip("Máximo de carriles seguidos de este tipo")]
-    [Min(1)] public int maxConsecutive = 3;
+    private readonly Dictionary<GameObject, ObjectPool<GameObject>> pools =
+        new Dictionary<GameObject, ObjectPool<GameObject>>();
 
-    [Header("Obstáculos (césped)")]
-    public GameObject[] obstaclePrefabs;
-    [Min(0)] public int minObstacles = 0;
-    [Min(0)] public int maxObstacles = 4;
+    // Para saber a qué pool pertenece cada instancia cuando se devuelve
+    private readonly Dictionary<GameObject, GameObject> prefabOf =
+        new Dictionary<GameObject, GameObject>();
 
-    [Header("Tráfico (carretera)")]
-    public GameObject[] vehiclePrefabs;
-    public Vector2 speedRange = new Vector2(4f, 7f);
-    [Tooltip("Segundos entre vehículos consecutivos (mín, máx)")]
-    public Vector2 spawnIntervalRange = new Vector2(1.5f, 3f);
-    [Tooltip("Separación mínima entre vehículos en unidades de mundo. Súbela si tus vehículos son largos")]
-    [Min(0f)] public float minGapUnits = 4f;
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+    }
+    public GameObject Get(GameObject prefab, Vector3 position, Quaternion rotation)
+    {
+        if (!pools.TryGetValue(prefab, out ObjectPool<GameObject> pool))
+        {
+            pool = CreatePool(prefab);
+            pools.Add(prefab, pool);
+        }
+
+        GameObject instance = pool.Get();
+        instance.transform.SetPositionAndRotation(position, rotation);
+        return instance;
+    }
+    public void Release(GameObject instance)
+    {
+        if (prefabOf.TryGetValue(instance, out GameObject prefab))
+        {
+            pools[prefab].Release(instance);
+        }
+        else
+        {
+            Destroy(instance); // No venía del pool
+        }
+    }
+
+    private ObjectPool<GameObject> CreatePool(GameObject prefab)
+    {
+        return new ObjectPool<GameObject>(
+            createFunc: () =>
+            {
+                GameObject go = Instantiate(prefab, transform);
+                prefabOf[go] = prefab;
+                return go;
+            },
+            actionOnGet: go => go.SetActive(true),
+            actionOnRelease: go => go.SetActive(false),
+            actionOnDestroy: go =>
+            {
+                prefabOf.Remove(go);
+                Destroy(go);
+            },
+            collectionCheck: true,
+            defaultCapacity: defaultCapacity,
+            maxSize: maxSize);
+    }
 }

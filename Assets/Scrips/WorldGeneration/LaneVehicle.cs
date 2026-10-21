@@ -1,11 +1,5 @@
 using System;
 using UnityEngine;
-
-/// <summary>
-/// Sustituye a VehicleMovement. Avanza en línea recta hacia delante (eje Z local)
-/// y avisa al carril cuando llega al punto de salida para que lo devuelva al pool.
-/// El eje Z (azul) del prefab del coche debe apuntar hacia donde mira el coche.
-/// </summary>
 public class LaneVehicle : MonoBehaviour
 {
     private float speed;

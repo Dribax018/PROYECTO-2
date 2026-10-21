@@ -1,15 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-
-
-/// - Mantiene una ventana de carriles: rowsAhead por delante y rowsBehind por detrás.
-/// - Usa un índice de progreso (fila máxima alcanzada) en vez de depender solo de coordenadas.
-/// - Elige el tipo de carril con aleatoriedad controlada (pesos, fila mínima, máximo de seguidos).
-/// - Escala la dificultad con el progreso, con límites mínimos y máximos.
-/// Supone que el jugador avanza hacia +Z, que cada fila mide tileSize y que empieza en z = 0.
-/// Colócalo en un GameObject vacío en (0,0,0).
-
 public class LaneGenerator : MonoBehaviour
 {
     [Header("Referencias")]
@@ -17,7 +8,7 @@ public class LaneGenerator : MonoBehaviour
 
     [Header("Cuadrícula")]
     [SerializeField] private float tileSize = 1f;
-    [Tooltip("Columnas a cada lado de la central")]
+    [Tooltip("Columnas a cada lado de la central. 6 = 13 columnas en total")]
     [SerializeField] private int columnsEachSide = 6;
 
     [Header("Ventana de carriles")]
@@ -39,7 +30,6 @@ public class LaneGenerator : MonoBehaviour
     [Tooltip("Multiplicador mínimo del intervalo entre vehículos (límite inferior)")]
     [SerializeField] private float minIntervalMultiplier = 0.6f;
 
-    /// <summary>Fila máxima alcanzada. Útil para puntuación o dificultad.</summary>
     public int Progress { get; private set; }
     public event Action<int> OnProgressChanged;
 
@@ -88,7 +78,6 @@ public class LaneGenerator : MonoBehaviour
     private void SpawnLane(int row)
     {
         LaneConfig config = PickConfig(row);
-
         float difficulty = Mathf.Clamp01(Mathf.Max(row, 0) / (float)rowsToMaxDifficulty);
         float speedMultiplier = Mathf.Lerp(1f, maxSpeedMultiplier, difficulty);
         float intervalMultiplier = Mathf.Lerp(1f, minIntervalMultiplier, difficulty);
@@ -103,18 +92,17 @@ public class LaneGenerator : MonoBehaviour
         safeColumn = nextSafeColumn;
         lanes.Enqueue(lane);
     }
-
     private LaneConfig PickConfig(int row)
     {
         if (row < safeStartRows) return Register(safeConfig);
+
         candidates.Clear();
         float totalWeight = 0f;
 
         foreach (LaneConfig config in laneConfigs)
         {
-            if (config == null || row < config.minRow) continue;                          
-            if (config.type == lastType && sameTypeCount >= config.maxConsecutive) continue;
-
+            if (config == null || row < config.minRow) continue;
+            if (config.type == lastType && sameTypeCount >= config.maxConsecutive) continue; 
             candidates.Add(config);
             totalWeight += config.weight;
         }
