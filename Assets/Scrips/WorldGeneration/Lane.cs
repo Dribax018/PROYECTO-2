@@ -5,6 +5,7 @@ using UnityEngine;
 /// Un carril (fila) del mundo. Va en el prefab del carril, junto al suelo y a los dos
 /// puntos de aparición. LaneGenerator lo configura con Init() y él se encarga de
 /// sus obstáculos (césped) o de su tráfico (carretera).
+/// <summary>
 public class Lane : MonoBehaviour
 {
     [Header("Puntos de aparición (en los extremos, fuera de la vista y a la altura del suelo)")]

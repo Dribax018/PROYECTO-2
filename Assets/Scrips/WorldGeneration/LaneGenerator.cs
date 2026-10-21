@@ -92,7 +92,6 @@ public class LaneGenerator : MonoBehaviour
         float difficulty = Mathf.Clamp01(Mathf.Max(row, 0) / (float)rowsToMaxDifficulty);
         float speedMultiplier = Mathf.Lerp(1f, maxSpeedMultiplier, difficulty);
         float intervalMultiplier = Mathf.Lerp(1f, minIntervalMultiplier, difficulty);
-
         int nextSafeColumn = Mathf.Clamp(safeColumn + UnityEngine.Random.Range(-1, 2),
                                          -columnsEachSide, columnsEachSide);
 
@@ -108,7 +107,6 @@ public class LaneGenerator : MonoBehaviour
     private LaneConfig PickConfig(int row)
     {
         if (row < safeStartRows) return Register(safeConfig);
-
         candidates.Clear();
         float totalWeight = 0f;
 
