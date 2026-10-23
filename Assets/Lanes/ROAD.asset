@@ -16,8 +16,8 @@ MonoBehaviour:
   lanePrefab: {fileID: 167866740824094484, guid: 4ac701b82b632ac47ac99e8933a309cc, type: 3}
   weight: 2
   minRow: 5
-  maxConsecutive: 3
   minConsecutive: 3
+  maxConsecutive: 3
   obstaclePrefabs:
   - {fileID: 919132149155446097, guid: 6d125366178ffec4886c296f03e6aa2d, type: 3}
   - {fileID: 919132149155446097, guid: f82556c947d30114dbf141df9cce39e9, type: 3}

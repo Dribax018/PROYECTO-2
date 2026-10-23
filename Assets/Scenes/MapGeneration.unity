@@ -313,8 +313,8 @@ MonoBehaviour:
   player: {fileID: 100459193}
   tileSize: 1
   columnsEachSide: 3
-  rowsAhead: 12
-  rowsBehind: 4
+  rowsAhead: 18
+  rowsBehind: 8
   safeConfig: {fileID: 11400000, guid: df471d3b2f1d12d4aa42a488f30b17eb, type: 2}
   laneConfigs:
   - {fileID: 11400000, guid: df471d3b2f1d12d4aa42a488f30b17eb, type: 2}

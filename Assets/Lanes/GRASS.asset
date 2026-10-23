@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LaneConfig
   type: 0
   lanePrefab: {fileID: 4707264994361559602, guid: 1aa9311fb43a9b641b4c9a913b36fc06, type: 3}
-  weight: 5
+  weight: 10
   minRow: 2
+  minConsecutive: 1
   maxConsecutive: 4
   obstaclePrefabs: []
   minObstacles: 0
