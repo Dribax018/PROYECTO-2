@@ -21,10 +21,10 @@ public class LaneConfig : ScriptableObject
     [Min(0f)] public float weight = 1f;
     [Tooltip("Fila a partir de la cual puede aparecer este carril")]
     [Min(0)] public int minRow = 0;
+    [Tooltip("Mínimo de carriles seguidos de ese tipo")]
+    [Min(1)] public int minConsecutive = 1;
     [Tooltip("Máximo de carriles seguidos de este tipo")]
     [Min(1)] public int maxConsecutive = 3;
-    //[Tooltip("Mínimo de carriles seguidos de este tipo")]
-    //[Min(1)] public int minConsecutive = 1;
 
     [Header("Obstáculos (césped)")]
     public GameObject[] obstaclePrefabs;
@@ -38,4 +38,8 @@ public class LaneConfig : ScriptableObject
     public Vector2 spawnIntervalRange = new Vector2(1.5f, 3f);
     [Tooltip("Separación mínima entre vehículos en unidades de mundo. Súbela si tus vehículos son largos")]
     [Min(0f)] public float minGapUnits = 4f;
+    private void OnValidate()
+    {
+        if (maxConsecutive < minConsecutive) maxConsecutive = minConsecutive;
+    }
 }
