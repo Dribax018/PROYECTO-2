@@ -1,17 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-
-/// <summary>
-/// Genera el mundo carril a carril alrededor del jugador.
-/// - Mantiene una ventana de carriles: rowsAhead por delante y rowsBehind por detrás.
-/// - Usa un índice de progreso (fila máxima alcanzada) en vez de depender solo de coordenadas.
-/// - Elige el tipo de carril con aleatoriedad controlada (pesos, fila mínima, máximo de seguidos).
-/// - Escala la dificultad con el progreso, con límites mínimos y máximos.
-///
-/// Supone que el jugador avanza hacia +Z, que cada fila mide tileSize y que empieza en z = 0.
-/// Colócalo en un GameObject vacío en (0,0,0).
-/// </summary>
 public class LaneGenerator : MonoBehaviour
 {
     [Header("Referencias")]
@@ -79,11 +68,14 @@ public class LaneGenerator : MonoBehaviour
             Progress = playerRow;
             OnProgressChanged?.Invoke(Progress);
         }
+
+        // Generar por delante
         while (nextRow <= Progress + rowsAhead)
         {
             SpawnLane(nextRow);
             nextRow++;
         }
+
         // Retirar los muy alejados por detrás (se deja un margen)
         while (lanes.Count > 0 && lanes.Peek().Row < Progress - rowsBehind)
         {
@@ -94,6 +86,8 @@ public class LaneGenerator : MonoBehaviour
     private void SpawnLane(int row)
     {
         LaneConfig config = PickConfig(row);
+        int indexInGroup = (sameConfigCount - 1) % config.Span;
+        bool hasTraffic = indexInGroup == config.Span / 2;
         float difficulty = Mathf.Clamp01(Mathf.Max(row, 0) / (float)rowsToMaxDifficulty);
         float speedMultiplier = Mathf.Lerp(1f, maxSpeedMultiplier, difficulty);
         float intervalMultiplier = Mathf.Lerp(1f, minIntervalMultiplier, difficulty);
@@ -102,7 +96,7 @@ public class LaneGenerator : MonoBehaviour
         Vector3 position = new Vector3(0f, 0f, row * tileSize);
         Lane lane = Instantiate(config.lanePrefab, position, Quaternion.identity, transform);
         lane.Init(config, row, tileSize, columnsEachSide,
-                  speedMultiplier, intervalMultiplier, safeColumn, nextSafeColumn);
+                  speedMultiplier, intervalMultiplier, safeColumn, nextSafeColumn, hasTraffic);
 
         safeColumn = nextSafeColumn;
         lanes.Enqueue(lane);
@@ -110,7 +104,9 @@ public class LaneGenerator : MonoBehaviour
     private LaneConfig PickConfig(int row)
     {
         if (row < safeStartRows) return Register(safeConfig);
-        if (lastConfig != null && sameConfigCount < lastConfig.minConsecutive)
+        if (lastConfig != null &&
+            (sameConfigCount < lastConfig.EffectiveMinConsecutive ||
+             sameConfigCount % lastConfig.Span != 0))
         {
             return Register(lastConfig);
         }
@@ -120,9 +116,12 @@ public class LaneGenerator : MonoBehaviour
 
         foreach (LaneConfig config in laneConfigs)
         {
-            if (config == null || row < config.minRow) continue;
-            if (config.type == lastType &&
-                config.maxConsecutive - sameTypeCount < config.minConsecutive) continue;
+            if (config == null || row < config.minRow) continue; 
+            if (config.type == lastType)
+            {
+                int needed = (config == lastConfig) ? config.Span : config.EffectiveMinConsecutive;
+                if (config.maxConsecutive - sameTypeCount < needed) continue;
+            }
 
             candidates.Add(config);
             totalWeight += config.weight;

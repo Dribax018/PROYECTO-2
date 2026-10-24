@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
 
     //crear la lista
     private List<Vector2Int> pos = new List<Vector2Int>();
-    private int posicionesGuardadas = 0;
+    //private int posicionesGuardadas = 0;
 
     private bool moviendose;
 
@@ -63,12 +63,12 @@ public class PlayerMovement : MonoBehaviour
         Vector3 final = inicio + direccion * distancia;
 
        
-        if (direccion.z > 0)
-        {
-            ComprobarPosicion(final);
-        }
+        //if (direccion.z > 0)
+        //{
+        //    ComprobarPosicion(final);
+        //}
 
-        OnPlayerMoved?.Invoke(final);
+        //OnPlayerMoved?.Invoke(final);
 
         transform.rotation = Quaternion.LookRotation(direccion);
 
@@ -93,29 +93,29 @@ public class PlayerMovement : MonoBehaviour
         moviendose = false;
     }
 
-    private void ComprobarPosicion(Vector3 destino)
-    {
-        Vector2Int nuevaPosicion = new Vector2Int(
-            Mathf.RoundToInt(destino.x),
-            Mathf.RoundToInt(destino.z)
-        );
+    //private void ComprobarPosicion(Vector3 destino)
+    //{
+    //    Vector2Int nuevaPosicion = new Vector2Int(
+    //        Mathf.RoundToInt(destino.x),
+    //        Mathf.RoundToInt(destino.z)
+    //    );
 
-        // Comprobar si la posición ya está en la lista.
-        if (pos.Contains(nuevaPosicion))
-        {
-            Debug.Log("Posición ya visitada. No se suman puntos.");
-            return;
-        }
+    //    // Comprobar si la posición ya está en la lista.
+    //    if (pos.Contains(nuevaPosicion))
+    //    {
+    //        Debug.Log("Posición ya visitada. No se suman puntos.");
+    //        return;
+    //    }
 
-        // Añadir la nueva posición a la lista.
-        pos.Add(nuevaPosicion);
+    //    // Añadir la nueva posición a la lista.
+    //    pos.Add(nuevaPosicion);
 
-        // Sumar un punto.
-        puntos++;
-        // puntuacion.text = puntos.ToString();
-        GameManager.instance.UpdateScore(puntos);
-        Debug.Log("Nueva posición: " + nuevaPosicion);
-        Debug.Log("Puntos: " + puntos);
+    //    // Sumar un punto.
+    //    puntos++;
+    //    // puntuacion.text = puntos.ToString();
+    //    GameManager.instance.UpdateScore(puntos);
+    //    Debug.Log("Nueva posición: " + nuevaPosicion);
+    //    Debug.Log("Puntos: " + puntos);
   
-    }
+    //}
 }

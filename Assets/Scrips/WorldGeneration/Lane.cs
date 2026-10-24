@@ -1,5 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
+
+/// <summary>
+/// Un carril (fila) del mundo. Va en el prefab del carril, junto al suelo y a los dos
+/// puntos de aparición. LaneGenerator lo configura con Init() y él se encarga de
+/// sus obstáculos (césped) o de su tráfico (carretera).
+/// </summary>
 public class Lane : MonoBehaviour
 {
     [Header("Puntos de aparición (en los extremos, fuera de la vista y a la altura del suelo)")]
@@ -13,8 +19,6 @@ public class Lane : MonoBehaviour
     private LaneConfig config;
     private float tileSize;
     private int columnsEachSide;
-
-    // Tráfico
     private Transform spawnPoint;
     private Transform exitPoint;
     private float speed;
@@ -23,7 +27,7 @@ public class Lane : MonoBehaviour
     private readonly List<LaneVehicle> activeVehicles = new List<LaneVehicle>();
     public void Init(LaneConfig config, int row, float tileSize, int columnsEachSide,
                      float speedMultiplier, float intervalMultiplier,
-                     int safeColumn, int nextSafeColumn)
+                     int safeColumn, int nextSafeColumn, bool hasTraffic)
     {
         this.config = config;
         this.Row = row;
@@ -37,14 +41,14 @@ public class Lane : MonoBehaviour
                 SpawnObstacles(safeColumn, nextSafeColumn);
                 break;
             case LaneType.Road:
-                SetupTraffic(speedMultiplier);
+                if (hasTraffic) SetupTraffic(speedMultiplier);
                 break;
         }
     }
 
     private void Update()
     {
-        if (spawnPoint == null) return;
+        if (spawnPoint == null) return; 
 
         spawnTimer -= Time.deltaTime;
         if (spawnTimer <= 0f)
@@ -62,7 +66,6 @@ public class Lane : MonoBehaviour
         {
             if (c != safeColumn && c != nextSafeColumn) columns.Add(c);
         }
-
         int count = Mathf.Min(Random.Range(config.minObstacles, config.maxObstacles + 1), columns.Count);
         for (int i = columns.Count - 1; i > 0; i--)
         {

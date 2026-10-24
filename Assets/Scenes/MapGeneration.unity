@@ -313,8 +313,8 @@ MonoBehaviour:
   player: {fileID: 100459193}
   tileSize: 1
   columnsEachSide: 3
-  rowsAhead: 18
-  rowsBehind: 8
+  rowsAhead: 25
+  rowsBehind: 18
   safeConfig: {fileID: 11400000, guid: df471d3b2f1d12d4aa42a488f30b17eb, type: 2}
   laneConfigs:
   - {fileID: 11400000, guid: df471d3b2f1d12d4aa42a488f30b17eb, type: 2}
@@ -625,7 +625,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1231273706
 MonoBehaviour:
   m_ObjectHideFlags: 0
