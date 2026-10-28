@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: GRAVER
   m_EditorClassIdentifier: Assembly-CSharp::LaneConfig
   type: 0
-  lanePrefab: {fileID: 0}
-  weight: 1
+  lanePrefab: {fileID: -1834052280097807161, guid: c534a22b869281a47a1e37b62c3ecb38, type: 3}
+  weight: 3
   minRow: 0
-  minConsecutive: 1
+  minConsecutive: 2
   maxConsecutive: 3
   obstaclePrefabs: []
   minObstacles: 0

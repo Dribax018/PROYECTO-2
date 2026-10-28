@@ -61,6 +61,7 @@ public class LaneGenerator : MonoBehaviour
 
     private void Update()
     {
+        if (player == null) return; // el jugador se ha destruido
         // Índice de progreso: solo sube, nunca baja aunque el jugador retroceda
         int playerRow = Mathf.RoundToInt(player.position.z / tileSize);
         if (playerRow > Progress)

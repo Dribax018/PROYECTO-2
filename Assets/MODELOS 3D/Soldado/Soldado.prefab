@@ -106,6 +106,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 80764a3ea12655c4e875b7f84db72e9b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7725371716142176908}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 80764a3ea12655c4e875b7f84db72e9b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4908803431866149153}
   m_SourcePrefab: {fileID: 100100000, guid: 80764a3ea12655c4e875b7f84db72e9b, type: 3}
 --- !u!1 &522553816340421569 stripped
 GameObject:
@@ -221,6 +224,7 @@ MonoBehaviour:
   obstaculos:
     serializedVersion: 2
     m_Bits: 8
+  puntos: 0
 --- !u!114 &7725371716142176908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,3 +237,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65efe855151383146961445c9c584a6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DestruirAlChocar
+--- !u!114 &4908803431866149153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 522553816340421569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24a7e0d483ea28a4c9bf1638b713a810, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerDeath

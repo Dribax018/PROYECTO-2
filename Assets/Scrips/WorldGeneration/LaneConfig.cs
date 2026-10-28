@@ -7,7 +7,8 @@ using UnityEngine;
 public enum LaneType
 {
     Grass,
-    Road
+    Road,
+    Gravel,
 }
 
 /// <summary>

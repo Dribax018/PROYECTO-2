@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 4707264994361559602}
   - component: {fileID: 4481551995765189301}
   m_Layer: 0
-  m_Name: carril
+  m_Name: SafeGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
