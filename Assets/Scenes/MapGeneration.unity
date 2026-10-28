@@ -282,7 +282,7 @@ MonoBehaviour:
   distance: 20
   smoothTime: 0.25
   followSideways: 1
-  forwardSpeed: 3
+  forwardSpeed: 2.5
 --- !u!114 &258916934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1793,6 +1793,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4908803431866149153, guid: 5b811e3759981264884c0c63a398180d, type: 3}
+      propertyPath: cameraFollow
+      value: 
+      objectReference: {fileID: 258916933}
     - target: {fileID: 7725371716142176908, guid: 5b811e3759981264884c0c63a398180d, type: 3}
       propertyPath: m_Enabled
       value: 0
