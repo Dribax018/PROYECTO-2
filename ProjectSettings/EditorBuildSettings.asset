@@ -14,6 +14,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PRUEBA GENERAL.unity
     guid: 776f174a5b691bc4e9303c9149a3c9ab
+  - enabled: 1
+    path: Assets/Scenes/PRUEBA UNAI.unity
+    guid: db2712ce8f8dfd14688525160eaac1ca
+  - enabled: 1
+    path: Assets/Scenes/MapGeneration.unity
+    guid: d24501f5c9cbf424497958ad17a28700
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
