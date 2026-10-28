@@ -1020,7 +1020,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 354dcf78dcda94040a7a31d1bd037d78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CambiarEscena
-  nombreEscena: 
+  nombreEscena: PRUEBA UNAI
 --- !u!1 &1210841309
 GameObject:
   m_ObjectHideFlags: 0
