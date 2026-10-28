@@ -51,7 +51,6 @@ public class PlayerMovement : MonoBehaviour
         if (Physics.Raycast(transform.position, direccion,
             distancia, obstaculos))
             return;
-
         StartCoroutine(Mover(direccion));
     }
 

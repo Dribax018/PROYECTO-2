@@ -18,10 +18,7 @@ MonoBehaviour:
   minRow: 5
   minConsecutive: 3
   maxConsecutive: 3
-  obstaclePrefabs:
-  - {fileID: 919132149155446097, guid: 6d125366178ffec4886c296f03e6aa2d, type: 3}
-  - {fileID: 919132149155446097, guid: f82556c947d30114dbf141df9cce39e9, type: 3}
-  - {fileID: 919132149155446097, guid: e27a492fbdccfa74c9f179931073c038, type: 3}
+  obstaclePrefabs: []
   minObstacles: 0
   maxObstacles: 4
   vehiclePrefabs:
