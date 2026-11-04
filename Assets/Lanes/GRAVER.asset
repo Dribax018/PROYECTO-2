@@ -17,7 +17,7 @@ MonoBehaviour:
   weight: 3
   minRow: 8
   minConsecutive: 2
-  maxConsecutive: 3
+  maxConsecutive: 5
   obstaclePrefabs:
   - {fileID: 3075998097136358183, guid: c835d2bc733195044a2c50bf4a4dec26, type: 3}
   - {fileID: 3075998097136358183, guid: c835d2bc733195044a2c50bf4a4dec26, type: 3}
@@ -27,5 +27,5 @@ MonoBehaviour:
   vehiclePrefabs: []
   speedRange: {x: 4, y: 7}
   spawnIntervalRange: {x: 1.5, y: 3}
-  minGapUnits: 4
-  laneSpan: 1
+  minGapUnits: 5
+  laneSpan: 5

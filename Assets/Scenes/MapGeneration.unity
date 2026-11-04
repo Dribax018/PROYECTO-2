@@ -2013,6 +2013,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: df471d3b2f1d12d4aa42a488f30b17eb, type: 2}
   - {fileID: 11400000, guid: 04bd69ec4f7c394448854bfc9facf43c, type: 2}
   - {fileID: 11400000, guid: 0ee998b30b96b284d84573a084b20174, type: 2}
+  - {fileID: 11400000, guid: 73752b266901b5441ba5f3ba2ca2048d, type: 2}
   safeStartRows: 10
   rowsToMaxDifficulty: 100
   maxSpeedMultiplier: 2
@@ -2618,6 +2619,10 @@ PrefabInstance:
     - target: {fileID: 522553816340421569, guid: 5b811e3759981264884c0c63a398180d, type: 3}
       propertyPath: m_Name
       value: Soldado
+      objectReference: {fileID: 0}
+    - target: {fileID: 522553816340421569, guid: 5b811e3759981264884c0c63a398180d, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 867975653093179771, guid: 5b811e3759981264884c0c63a398180d, type: 3}
       propertyPath: m_LocalPosition.x
