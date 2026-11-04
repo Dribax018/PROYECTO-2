@@ -9,6 +9,7 @@ public enum LaneType
     Grass,
     Road,
     Gravel,
+    Water
 }
 
 /// <summary>
@@ -48,7 +49,13 @@ public class LaneConfig : ScriptableObject
     [Tooltip("Carriles que ocupa un vehículo de esta variante")]
     [Min(1)] public int laneSpan = 1;
 
-    /// <summary>laneSpan seguro (nunca menor que 1).</summary>
+    [Header("Troncos (agua)")]
+    public GameObject[] logPrefabs;
+    public Vector2 logSpeedRange = new Vector2(2f, 4f);
+    [Tooltip("Segundos entre troncos consecutivos")]
+    public Vector2 logSpawnIntervalRange = new Vector2(2f, 3f);
+    [Tooltip("Separación mínima entre troncos")]
+    [Min(0f)] public float logMinGapUnits = 5f;
     public int Span => Mathf.Max(1, laneSpan);
 
     /// <summary>

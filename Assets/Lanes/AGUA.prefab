@@ -1,5 +1,67 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &518866802717608046
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8858069489843308043}
+  m_Layer: 0
+  m_Name: LeftPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8858069489843308043
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 518866802717608046}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 10, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8809620846194200466}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!1 &5424163664102658214
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7598759329113699809}
+  m_Layer: 0
+  m_Name: RightPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7598759329113699809
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5424163664102658214}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -10, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8809620846194200466}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1 &8814104989909603709
 GameObject:
   m_ObjectHideFlags: 0
@@ -12,7 +74,7 @@ GameObject:
   - component: {fileID: -1834052280097807161}
   - component: {fileID: 6118723179044679118}
   m_Layer: 0
-  m_Name: GRAVELER 1
+  m_Name: AGUA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52,6 +114,8 @@ Transform:
   - {fileID: 213715966940100277}
   - {fileID: 172348088514427769}
   - {fileID: 8275848892352472443}
+  - {fileID: 7598759329113699809}
+  - {fileID: 8858069489843308043}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &-1834052280097807161
@@ -66,8 +130,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbe12757b5336d64cab53687fb514258, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Lane
-  leftPoint: {fileID: 0}
-  rightPoint: {fileID: 0}
+  leftPoint: {fileID: 8858069489843308043}
+  rightPoint: {fileID: 7598759329113699809}
 --- !u!65 &6118723179044679118
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -141,6 +205,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: AGUA (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 05f98fe680c66dc4a859f64ebf541ffb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 05f98fe680c66dc4a859f64ebf541ffb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -202,6 +274,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 05f98fe680c66dc4a859f64ebf541ffb, type: 3}
       propertyPath: m_Name
       value: AGUA (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 05f98fe680c66dc4a859f64ebf541ffb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 05f98fe680c66dc4a859f64ebf541ffb, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -265,6 +345,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: AGUA
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 05f98fe680c66dc4a859f64ebf541ffb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 05f98fe680c66dc4a859f64ebf541ffb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -326,6 +414,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 05f98fe680c66dc4a859f64ebf541ffb, type: 3}
       propertyPath: m_Name
       value: AGUA (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 05f98fe680c66dc4a859f64ebf541ffb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 05f98fe680c66dc4a859f64ebf541ffb, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -389,6 +485,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: AGUA (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 05f98fe680c66dc4a859f64ebf541ffb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 05f98fe680c66dc4a859f64ebf541ffb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -450,6 +554,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 05f98fe680c66dc4a859f64ebf541ffb, type: 3}
       propertyPath: m_Name
       value: AGUA (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 05f98fe680c66dc4a859f64ebf541ffb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 05f98fe680c66dc4a859f64ebf541ffb, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -513,6 +625,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: AGUA (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 05f98fe680c66dc4a859f64ebf541ffb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 05f98fe680c66dc4a859f64ebf541ffb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -574,6 +694,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 05f98fe680c66dc4a859f64ebf541ffb, type: 3}
       propertyPath: m_Name
       value: AGUA (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 05f98fe680c66dc4a859f64ebf541ffb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 05f98fe680c66dc4a859f64ebf541ffb, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -637,6 +765,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: AGUA (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 05f98fe680c66dc4a859f64ebf541ffb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 05f98fe680c66dc4a859f64ebf541ffb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -698,6 +834,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 05f98fe680c66dc4a859f64ebf541ffb, type: 3}
       propertyPath: m_Name
       value: AGUA (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 05f98fe680c66dc4a859f64ebf541ffb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 05f98fe680c66dc4a859f64ebf541ffb, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -761,6 +905,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: AGUA (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 05f98fe680c66dc4a859f64ebf541ffb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 05f98fe680c66dc4a859f64ebf541ffb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -822,6 +974,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 05f98fe680c66dc4a859f64ebf541ffb, type: 3}
       propertyPath: m_Name
       value: AGUA (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 05f98fe680c66dc4a859f64ebf541ffb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 05f98fe680c66dc4a859f64ebf541ffb, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -885,6 +1045,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: AGUA (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 05f98fe680c66dc4a859f64ebf541ffb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 05f98fe680c66dc4a859f64ebf541ffb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -946,6 +1114,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 05f98fe680c66dc4a859f64ebf541ffb, type: 3}
       propertyPath: m_Name
       value: AGUA (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 05f98fe680c66dc4a859f64ebf541ffb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 05f98fe680c66dc4a859f64ebf541ffb, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1009,6 +1185,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: AGUA (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 05f98fe680c66dc4a859f64ebf541ffb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 05f98fe680c66dc4a859f64ebf541ffb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1070,6 +1254,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 05f98fe680c66dc4a859f64ebf541ffb, type: 3}
       propertyPath: m_Name
       value: AGUA (20)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 05f98fe680c66dc4a859f64ebf541ffb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 05f98fe680c66dc4a859f64ebf541ffb, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1133,6 +1325,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: AGUA (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 05f98fe680c66dc4a859f64ebf541ffb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 05f98fe680c66dc4a859f64ebf541ffb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1194,6 +1394,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 05f98fe680c66dc4a859f64ebf541ffb, type: 3}
       propertyPath: m_Name
       value: AGUA (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 05f98fe680c66dc4a859f64ebf541ffb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 05f98fe680c66dc4a859f64ebf541ffb, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1257,6 +1465,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: AGUA (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 05f98fe680c66dc4a859f64ebf541ffb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 05f98fe680c66dc4a859f64ebf541ffb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1319,6 +1535,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: AGUA (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 05f98fe680c66dc4a859f64ebf541ffb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 05f98fe680c66dc4a859f64ebf541ffb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1380,6 +1604,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 05f98fe680c66dc4a859f64ebf541ffb, type: 3}
       propertyPath: m_Name
       value: AGUA (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 05f98fe680c66dc4a859f64ebf541ffb, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 05f98fe680c66dc4a859f64ebf541ffb, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

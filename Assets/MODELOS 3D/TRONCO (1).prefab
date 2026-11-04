@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &2410535948341833608
+--- !u!1001 &427211599215101718
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 2c408ac03aa46774da1ea616ecc920cf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.44040304
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2c408ac03aa46774da1ea616ecc920cf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.578
+      value: 1.44
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2c408ac03aa46774da1ea616ecc920cf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.291
+      value: -1.736
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2c408ac03aa46774da1ea616ecc920cf, type: 3}
       propertyPath: m_LocalRotation.w
@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2c408ac03aa46774da1ea616ecc920cf, type: 3}
       propertyPath: m_Name
-      value: TRONCO
+      value: TRONCO (1)
       objectReference: {fileID: 0}
     - target: {fileID: 1151388028547126963, guid: 2c408ac03aa46774da1ea616ecc920cf, type: 3}
       propertyPath: m_LocalPosition.z
@@ -62,37 +62,29 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2c408ac03aa46774da1ea616ecc920cf, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1629740469115550561}
+      addedObject: {fileID: 7483611675824110189}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2c408ac03aa46774da1ea616ecc920cf, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5551368168206182161}
+      addedObject: {fileID: 5053622931907831167}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2c408ac03aa46774da1ea616ecc920cf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4273580185771323103}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2c408ac03aa46774da1ea616ecc920cf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 748387286470446059}
   m_SourcePrefab: {fileID: 100100000, guid: 2c408ac03aa46774da1ea616ecc920cf, type: 3}
---- !u!1 &3292861942400832217 stripped
+--- !u!1 &661091805037181511 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 2c408ac03aa46774da1ea616ecc920cf, type: 3}
-  m_PrefabInstance: {fileID: 2410535948341833608}
+  m_PrefabInstance: {fileID: 427211599215101718}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1629740469115550561
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3292861942400832217}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1540a9fe94c838749bdc8720cad9eb62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MoverTronco
-  velocidad: 3
-  direccion: 1
---- !u!65 &5551368168206182161
+--- !u!65 &7483611675824110189
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3292861942400832217}
+  m_GameObject: {fileID: 661091805037181511}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -105,5 +97,56 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.9598843, y: 1, z: 1.0787449}
-  m_Center: {x: -0.54393905, y: 0, z: 0.039372444}
+  m_Size: {x: 1.491429, y: 0.6852274, z: 1}
+  m_Center: {x: -0.24571455, y: -0.1573863, z: 0}
+--- !u!54 &5053622931907831167
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 661091805037181511}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 3
+--- !u!114 &4273580185771323103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 661091805037181511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d57eb6feee3df994d9b04f9e3ac4f93c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LogPlatform
+--- !u!114 &748387286470446059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 661091805037181511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2fbdf52403e29942856587f21cb8ac5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LaneLog

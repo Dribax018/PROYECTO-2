@@ -25,6 +25,12 @@ public class Lane : MonoBehaviour
     private float intervalMultiplier = 1f;
     private float spawnTimer;
     private readonly List<LaneVehicle> activeVehicles = new List<LaneVehicle>();
+    private Transform logSpawnPoint;
+    private Transform logExitPoint;
+    private float logSpeed;
+    private float logSpawnTimer;
+
+    private readonly List<LaneLog> activeLogs = new List<LaneLog>();
     public void Init(LaneConfig config, int row, float tileSize, int columnsEachSide,
                      float speedMultiplier, float intervalMultiplier,
                      int safeColumn, int nextSafeColumn, bool hasTraffic)
@@ -43,18 +49,34 @@ public class Lane : MonoBehaviour
             case LaneType.Road:
                 if (hasTraffic) SetupTraffic(speedMultiplier);
                 break;
+            case LaneType.Water:SetupLogs(speedMultiplier);
+                break;
         }
     }
 
     private void Update()
     {
-        if (spawnPoint == null) return; 
-
-        spawnTimer -= Time.deltaTime;
-        if (spawnTimer <= 0f)
+        if (spawnPoint != null)
         {
-            SpawnVehicleAt(spawnPoint.position);
-            spawnTimer = NextInterval();
+            spawnTimer -= Time.deltaTime;
+
+            if (spawnTimer <= 0f)
+            {
+                SpawnVehicleAt(spawnPoint.position);
+                spawnTimer = NextInterval();
+            }
+        }
+
+        // Generación de troncos
+        if (logSpawnPoint != null)
+        {
+            logSpawnTimer -= Time.deltaTime;
+
+            if (logSpawnTimer <= 0f)
+            {
+                SpawnLogAt(logSpawnPoint.position);
+                logSpawnTimer = NextLogInterval();
+            }
         }
     }
 
@@ -146,7 +168,88 @@ public class Lane : MonoBehaviour
         {
             PoolManager.Instance.Release(vehicle.gameObject);
         }
+
         activeVehicles.Clear();
+
+        foreach (LaneLog log in activeLogs)
+        {
+            PoolManager.Instance.Release(log.gameObject);
+        }
+
+        activeLogs.Clear();
+
         Destroy(gameObject);
+    }
+    private void SetupLogs(float speedMultiplier)
+    {
+        if (config.logPrefabs == null ||
+            config.logPrefabs.Length == 0)
+        {
+            Debug.LogWarning(
+                $"LaneConfig '{config.name}' no tiene logPrefabs."
+            );
+            return;
+        }
+        bool leftToRight = Random.value < 0.5f;
+
+        logSpawnPoint = leftToRight ? leftPoint : rightPoint;
+        logExitPoint = leftToRight ? rightPoint : leftPoint;
+
+        logSpeed = Random.Range(
+            config.logSpeedRange.x,
+            config.logSpeedRange.y
+        ) * speedMultiplier;
+
+        logSpawnTimer = Random.Range(
+            0f,
+            NextLogInterval()
+        );
+    }
+
+    private float NextLogInterval()
+    {
+        float interval = Random.Range(
+            config.logSpawnIntervalRange.x,
+            config.logSpawnIntervalRange.y
+        ) * intervalMultiplier;
+
+        float minInterval =
+            config.logMinGapUnits / Mathf.Max(logSpeed, 0.01f);
+
+        return Mathf.Max(interval, minInterval);
+    }
+
+    private void SpawnLogAt(Vector3 position)
+    {
+        GameObject prefab = config.logPrefabs[
+            Random.Range(0, config.logPrefabs.Length)
+        ];
+
+        GameObject instance = PoolManager.Instance.Get(
+            prefab,
+            position,
+            logSpawnPoint.rotation
+        );
+
+        LaneLog log = instance.GetComponent<LaneLog>();
+
+        if (log == null)
+        {
+            Debug.LogError(
+                $"El prefab '{prefab.name}' necesita LaneLog."
+            );
+
+            PoolManager.Instance.Release(instance);
+            return;
+        }
+
+        log.Init(logSpeed, logExitPoint.position, OnLogFinished);
+
+        activeLogs.Add(log);
+    }
+    private void OnLogFinished(LaneLog log)
+    {
+        activeLogs.Remove(log);
+        PoolManager.Instance.Release(log.gameObject);
     }
 }

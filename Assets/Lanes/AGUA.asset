@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63b0047fae614434b9bf4316215fd780, type: 3}
   m_Name: AGUA
   m_EditorClassIdentifier: Assembly-CSharp::LaneConfig
-  type: 0
+  type: 3
   lanePrefab: {fileID: -1834052280097807161, guid: a04030fe225cf7d4caa58d8bf3b78ffe, type: 3}
   weight: 1
-  minRow: 0
-  minConsecutive: 3
-  maxConsecutive: 10
+  minRow: 5
+  minConsecutive: 2
+  maxConsecutive: 4
   obstaclePrefabs: []
   minObstacles: 0
   maxObstacles: 4
@@ -27,3 +27,8 @@ MonoBehaviour:
   spawnIntervalRange: {x: 1.5, y: 3}
   minGapUnits: 4
   laneSpan: 1
+  logPrefabs:
+  - {fileID: 661091805037181511, guid: 3f04f2ddac5647f448a51b233b25d3c8, type: 3}
+  logSpeedRange: {x: 2, y: 4}
+  logSpawnIntervalRange: {x: 2, y: 3}
+  logMinGapUnits: 5

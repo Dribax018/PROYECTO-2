@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63b0047fae614434b9bf4316215fd780, type: 3}
   m_Name: GRAVER
   m_EditorClassIdentifier: Assembly-CSharp::LaneConfig
-  type: 0
+  type: 2
   lanePrefab: {fileID: -1834052280097807161, guid: c534a22b869281a47a1e37b62c3ecb38, type: 3}
   weight: 3
   minRow: 8
@@ -29,3 +29,7 @@ MonoBehaviour:
   spawnIntervalRange: {x: 1.5, y: 3}
   minGapUnits: 5
   laneSpan: 5
+  logPrefabs: []
+  logSpeedRange: {x: 2, y: 4}
+  logSpawnIntervalRange: {x: 2, y: 3}
+  logMinGapUnits: 5
