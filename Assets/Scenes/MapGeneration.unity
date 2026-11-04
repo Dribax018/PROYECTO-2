@@ -2591,7 +2591,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc30593ff4054b04586e3da2a0fb6b17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Exit
-  popup_Salir: {fileID: 0}
+  popup_Salir: {fileID: 668513415}
 --- !u!4 &1421241570
 Transform:
   m_ObjectHideFlags: 0
