@@ -1,11 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-
-/// <summary>
-/// Un carril (fila) del mundo. Va en el prefab del carril, junto al suelo y a los dos
-/// puntos de aparición. LaneGenerator lo configura con Init() y él se encarga de
-/// sus obstáculos (césped) o de su tráfico (carretera).
-/// </summary>
 public class Lane : MonoBehaviour
 {
     [Header("Puntos de aparición (en los extremos, fuera de la vista y a la altura del suelo)")]
@@ -31,6 +25,7 @@ public class Lane : MonoBehaviour
     private float logSpawnTimer;
 
     private readonly List<LaneLog> activeLogs = new List<LaneLog>();
+
     public void Init(LaneConfig config, int row, float tileSize, int columnsEachSide,
                      float speedMultiplier, float intervalMultiplier,
                      int safeColumn, int nextSafeColumn, bool hasTraffic)
@@ -49,7 +44,12 @@ public class Lane : MonoBehaviour
             case LaneType.Road:
                 if (hasTraffic) SetupTraffic(speedMultiplier);
                 break;
-            case LaneType.Water:SetupLogs(speedMultiplier);
+            case LaneType.Water:
+                SetupLogs(speedMultiplier);
+                break;
+            case LaneType.Shooter:
+                SetupTraffic(speedMultiplier, false);
+                SpawnShooterEnemy();
                 break;
         }
     }
@@ -103,7 +103,8 @@ public class Lane : MonoBehaviour
             obstacle.transform.localPosition = new Vector3(columns[i] * tileSize, local.y, 0f);
         }
     }
-    private void SetupTraffic(float speedMultiplier)
+
+    private void SetupTraffic(float speedMultiplier, bool prewarm = true)
     {
         if (config.vehiclePrefabs == null || config.vehiclePrefabs.Length == 0)
         {
@@ -117,15 +118,23 @@ public class Lane : MonoBehaviour
 
         speed = Random.Range(config.speedRange.x, config.speedRange.y) * speedMultiplier;
 
-        PrewarmVehicles();
+        if (prewarm) PrewarmVehicles();
         spawnTimer = NextInterval();
     }
+
+    private void SpawnShooterEnemy()
+    {
+        if (spawnPoint == null || config.enemyPrefab == null) return;
+        Instantiate(config.enemyPrefab, spawnPoint.position, spawnPoint.rotation, transform);
+    }
+
     private float NextInterval()
     {
         float interval = Random.Range(config.spawnIntervalRange.x, config.spawnIntervalRange.y) * intervalMultiplier;
         float minInterval = config.minGapUnits / Mathf.Max(speed, 0.01f);
         return Mathf.Max(interval, minInterval);
     }
+
     private void PrewarmVehicles()
     {
         Vector3 start = spawnPoint.position;
@@ -142,6 +151,9 @@ public class Lane : MonoBehaviour
 
     private void SpawnVehicleAt(Vector3 position)
     {
+        if (config.type == LaneType.Shooter)
+            position += Vector3.up * config.projectileHeight;
+
         GameObject prefab = config.vehiclePrefabs[Random.Range(0, config.vehiclePrefabs.Length)];
         GameObject instance = PoolManager.Instance.Get(prefab, position, spawnPoint.rotation);
 
@@ -162,6 +174,7 @@ public class Lane : MonoBehaviour
         activeVehicles.Remove(vehicle);
         PoolManager.Instance.Release(vehicle.gameObject);
     }
+
     public void Retire()
     {
         foreach (LaneVehicle vehicle in activeVehicles)
@@ -180,6 +193,7 @@ public class Lane : MonoBehaviour
 
         Destroy(gameObject);
     }
+
     private void SetupLogs(float speedMultiplier)
     {
         if (config.logPrefabs == null ||
@@ -247,6 +261,7 @@ public class Lane : MonoBehaviour
 
         activeLogs.Add(log);
     }
+
     private void OnLogFinished(LaneLog log)
     {
         activeLogs.Remove(log);
