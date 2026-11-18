@@ -1,22 +1,12 @@
 using UnityEngine;
-
-/// <summary>
-/// Tipos de carril. Para añadir Agua o Vía de tren, añade el valor aquí
-/// y un nuevo case en Lane.Init().
-/// </summary>
 public enum LaneType
 {
     Grass,
     Road,
     Gravel,
-    Water
+    Water,
+    Shooter
 }
-
-/// <summary>
-/// Datos de una variante de carril (carretera lenta, carretera rápida, césped con árboles...).
-/// Crear desde: Assets > Create > Lanes > Lane Config.
-/// Las variantes se crean cambiando valores, no creando clases nuevas.
-/// </summary>
 [CreateAssetMenu(menuName = "Lanes/Lane Config", fileName = "NewLaneConfig")]
 public class LaneConfig : ScriptableObject
 {
@@ -39,10 +29,12 @@ public class LaneConfig : ScriptableObject
     [Min(0)] public int minObstacles = 0;
     [Min(0)] public int maxObstacles = 4;
 
-    [Header("Tráfico (carretera)")]
+    [Header("Tráfico (carretera) / Proyectiles (Shooter)")]
+    [Tooltip("Vehículos en carretera. En carriles Shooter, aquí van los proyectiles (con LaneVehicle)")]
     public GameObject[] vehiclePrefabs;
+    [Tooltip("Velocidad. En Shooter es la velocidad del proyectil")]
     public Vector2 speedRange = new Vector2(4f, 7f);
-    [Tooltip("Segundos entre vehículos consecutivos (mín, máx)")]
+    [Tooltip("Segundos entre vehículos/disparos consecutivos (mín, máx)")]
     public Vector2 spawnIntervalRange = new Vector2(1.5f, 3f);
     [Tooltip("Separación mínima entre vehículos en unidades de mundo. Súbela si tus vehículos son largos")]
     [Min(0f)] public float minGapUnits = 4f;
@@ -56,12 +48,14 @@ public class LaneConfig : ScriptableObject
     public Vector2 logSpawnIntervalRange = new Vector2(2f, 3f);
     [Tooltip("Separación mínima entre troncos")]
     [Min(0f)] public float logMinGapUnits = 5f;
-    public int Span => Mathf.Max(1, laneSpan);
 
-    /// <summary>
-    /// Racha mínima real: al menos minConsecutive y siempre un múltiplo de laneSpan,
-    /// para que los grupos de carriles queden completos.
-    /// </summary>
+    [Header("Disparadores (Shooter)")]
+    [Tooltip("Enemigo que se coloca en el lado desde el que dispara")]
+    public GameObject enemyPrefab;
+    [Tooltip("Altura a la que sale el proyectil. Debe quedar por encima del collider agachado")]
+    public float projectileHeight = 0.8f;
+
+    public int Span => Mathf.Max(1, laneSpan);
     public int EffectiveMinConsecutive
     {
         get
@@ -70,6 +64,7 @@ public class LaneConfig : ScriptableObject
             return (min + Span - 1) / Span * Span;
         }
     }
+
     private void OnValidate()
     {
         if (maxConsecutive < EffectiveMinConsecutive) maxConsecutive = EffectiveMinConsecutive;
