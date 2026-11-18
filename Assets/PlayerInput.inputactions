@@ -15,6 +15,16 @@
                     "interactions": "",
                     "initialStateCheck": true,
                     "priority": 0
+                },
+                {
+                    "name": "agachado",
+                    "type": "Value",
+                    "id": "f82b299d-d9e7-4b6d-b0ad-d6d537591631",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true,
+                    "priority": 0
                 }
             ],
             "bindings": [
@@ -72,6 +82,17 @@
                     "action": "move",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "519ff36a-4e29-44d8-b308-f651e26d162f",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "agachado",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
