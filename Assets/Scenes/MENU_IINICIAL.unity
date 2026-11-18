@@ -492,6 +492,7 @@ GameObject:
   - component: {fileID: 477788874}
   - component: {fileID: 477788876}
   - component: {fileID: 477788875}
+  - component: {fileID: 477788877}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -618,6 +619,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 477788873}
   m_CullTransparentMesh: 1
+--- !u!114 &477788877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 477788873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 354dcf78dcda94040a7a31d1bd037d78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CambiarEscena
+  nombreEscena: OPCIONES_IINICIAL
 --- !u!1 &619063681
 GameObject:
   m_ObjectHideFlags: 0
@@ -1527,6 +1541,7 @@ GameObject:
   - component: {fileID: 1210841313}
   - component: {fileID: 1210841312}
   - component: {fileID: 1210841311}
+  - component: {fileID: 1210841314}
   m_Layer: 5
   m_Name: Boton ajustes
   m_TagString: Untagged
@@ -1636,6 +1651,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1210841309}
   m_CullTransparentMesh: 1
+--- !u!114 &1210841314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1210841309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 354dcf78dcda94040a7a31d1bd037d78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CambiarEscena
+  nombreEscena: OPCIONES_IINICIAL
 --- !u!1 &1336634132
 GameObject:
   m_ObjectHideFlags: 0
@@ -1648,6 +1676,7 @@ GameObject:
   - component: {fileID: 1336634135}
   - component: {fileID: 1336634134}
   - component: {fileID: 1336634133}
+  - component: {fileID: 1336634137}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1738,6 +1767,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1336634137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1336634132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 354dcf78dcda94040a7a31d1bd037d78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CambiarEscena
+  nombreEscena: 
 --- !u!1 &1360107267
 GameObject:
   m_ObjectHideFlags: 0
@@ -2014,6 +2056,7 @@ GameObject:
   - component: {fileID: 1470302743}
   - component: {fileID: 1470302742}
   - component: {fileID: 1470302741}
+  - component: {fileID: 1470302744}
   m_Layer: 5
   m_Name: creditos
   m_TagString: Untagged
@@ -2123,6 +2166,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1470302739}
   m_CullTransparentMesh: 1
+--- !u!114 &1470302744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470302739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 354dcf78dcda94040a7a31d1bd037d78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CambiarEscena
+  nombreEscena: CREDITOS_IINICIAL
 --- !u!1 &1809889705
 GameObject:
   m_ObjectHideFlags: 0
@@ -2389,7 +2445,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Salir
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2718,8 +2774,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 4811624949040205565, guid: 56cf5c58d86073e41af329501c04ddc0, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
