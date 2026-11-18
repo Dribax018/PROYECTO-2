@@ -16,20 +16,56 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] public int puntos = 0;
 
-    //crear la lista
+    [Header("Agacharse")]
+    [SerializeField] private BoxCollider colliderJugador;
+    [SerializeField] private float alturaAgachado = 0.5f;
+
+    private Vector3 sizeOriginal;
+    private Vector3 centerOriginal;
+    private bool agachado;
     private List<Vector2Int> pos = new List<Vector2Int>();
-    //private int posicionesGuardadas = 0;
 
     private bool moviendose;
+
+    private void Awake()
+    {
+        if (colliderJugador == null)
+            colliderJugador = GetComponent<BoxCollider>();
+
+        sizeOriginal = colliderJugador.size;
+        centerOriginal = colliderJugador.center;
+    }
 
     private void OnEnable()
     {
         inputReader.MovePressed += MoverJugador;
+        inputReader.CrouchChanged += CambiarAgachado;
     }
 
     private void OnDisable()
     {
         inputReader.MovePressed -= MoverJugador;
+        inputReader.CrouchChanged -= CambiarAgachado;
+    }
+
+    private void CambiarAgachado(bool agachar)
+    {
+        agachado = agachar;
+
+        if (agachar)
+        {
+            float diferencia = sizeOriginal.y - alturaAgachado;
+
+            colliderJugador.size = new Vector3(sizeOriginal.x, alturaAgachado, sizeOriginal.z);
+            colliderJugador.center = new Vector3(centerOriginal.x,
+                                                 centerOriginal.y - diferencia / 2f,
+                                                 centerOriginal.z);
+        }
+        else
+        {
+            colliderJugador.size = sizeOriginal;
+            colliderJugador.center = centerOriginal;
+        }
     }
 
     private void MoverJugador(Vector2 input)
@@ -60,15 +96,6 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 inicio = transform.position;
         Vector3 final = inicio + direccion * distancia;
-
-       
-        //if (direccion.z > 0)
-        //{
-        //    ComprobarPosicion(final);
-        //}
-
-        //OnPlayerMoved?.Invoke(final);
-
         transform.rotation = Quaternion.LookRotation(direccion);
 
         float tiempo = 0;
@@ -91,30 +118,4 @@ public class PlayerMovement : MonoBehaviour
         transform.position = final;
         moviendose = false;
     }
-
-    //private void ComprobarPosicion(Vector3 destino)
-    //{
-    //    Vector2Int nuevaPosicion = new Vector2Int(
-    //        Mathf.RoundToInt(destino.x),
-    //        Mathf.RoundToInt(destino.z)
-    //    );
-
-    //    // Comprobar si la posición ya está en la lista.
-    //    if (pos.Contains(nuevaPosicion))
-    //    {
-    //        Debug.Log("Posición ya visitada. No se suman puntos.");
-    //        return;
-    //    }
-
-    //    // Añadir la nueva posición a la lista.
-    //    pos.Add(nuevaPosicion);
-
-    //    // Sumar un punto.
-    //    puntos++;
-    //    // puntuacion.text = puntos.ToString();
-    //    GameManager.instance.UpdateScore(puntos);
-    //    Debug.Log("Nueva posición: " + nuevaPosicion);
-    //    Debug.Log("Puntos: " + puntos);
-  
-    //}
 }
