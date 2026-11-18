@@ -222,7 +222,7 @@ public class Lane : MonoBehaviour
     private void SpawnLogAt(Vector3 position)
     {
         GameObject prefab = config.logPrefabs[
-            Random.Range(0, config.logPrefabs.Length)
+ Random.Range(0, config.logPrefabs.Length)
         ];
 
         GameObject instance = PoolManager.Instance.Get(
