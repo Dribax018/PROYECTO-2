@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: SHOOTER
   m_EditorClassIdentifier: Assembly-CSharp::LaneConfig
   type: 4
-  lanePrefab: {fileID: 0}
-  weight: 1
-  minRow: 10
+  lanePrefab: {fileID: -1834052280097807161, guid: 7e86dcccf03f9fb48bacd4f4eb29cb17, type: 3}
+  weight: 0.5
+  minRow: 5
   minConsecutive: 4
   maxConsecutive: 8
   obstaclePrefabs: []
