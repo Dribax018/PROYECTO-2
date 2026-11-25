@@ -52,6 +52,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: contenedor
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3b862fa7de319d8499d80a55591f41e4, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 3b862fa7de319d8499d80a55591f41e4, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

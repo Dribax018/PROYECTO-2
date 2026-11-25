@@ -10,32 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 63b0047fae614434b9bf4316215fd780, type: 3}
-  m_Name: GRAVER
+  m_Name: GRAVELER
   m_EditorClassIdentifier: Assembly-CSharp::LaneConfig
-  type: 2
+  type: 0
   lanePrefab: {fileID: -1834052280097807161, guid: c534a22b869281a47a1e37b62c3ecb38, type: 3}
-  weight: 2
-  minRow: 8
-  minConsecutive: 3
-  maxConsecutive: 5
+  weight: 1
+  minRow: 0
+  minConsecutive: 2
+  maxConsecutive: 20
   obstaclePrefabs:
-  - {fileID: 3075998097136358183, guid: c835d2bc733195044a2c50bf4a4dec26, type: 3}
   - {fileID: 4462548731216292295, guid: b7a4e4d16f1598f42be3266c4bc4b983, type: 3}
   - {fileID: 5843788115477968016, guid: fd921887729d9ec45b91ab27d04b1abe, type: 3}
   - {fileID: 3015836737332697454, guid: 3cd2d60452dcc034280ebcfb4cb81eef, type: 3}
   - {fileID: 3075998097136358183, guid: c835d2bc733195044a2c50bf4a4dec26, type: 3}
-<<<<<<< HEAD
-  minObstacles: 5
-=======
-  - {fileID: 3075998097136358183, guid: c835d2bc733195044a2c50bf4a4dec26, type: 3}
-  minObstacles: 3
->>>>>>> f2f99a2391447236dd698461807c800dc77db261
+  minObstacles: 4
   maxObstacles: 15
   vehiclePrefabs: []
   speedRange: {x: 4, y: 7}
   spawnIntervalRange: {x: 1.5, y: 3}
-  minGapUnits: 5
-  laneSpan: 5
+  minGapUnits: 4
+  laneSpan: 1
   logPrefabs: []
   logSpeedRange: {x: 2, y: 4}
   logSpawnIntervalRange: {x: 2, y: 3}
