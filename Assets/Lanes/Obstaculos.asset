@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: Obstaculos
   m_EditorClassIdentifier: Assembly-CSharp::LaneConfig
   type: 0
-  lanePrefab: {fileID: 0}
+  lanePrefab: {fileID: 5259143338923942265, guid: c835d2bc733195044a2c50bf4a4dec26, type: 3}
   weight: 1
   minRow: 0
   minConsecutive: 1
   maxConsecutive: 3
-  obstaclePrefabs: []
+  obstaclePrefabs:
+  - {fileID: 3075998097136358183, guid: c835d2bc733195044a2c50bf4a4dec26, type: 3}
   minObstacles: 0
   maxObstacles: 4
   vehiclePrefabs: []
