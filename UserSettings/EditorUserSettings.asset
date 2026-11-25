@@ -11,38 +11,6 @@ EditorUserSettings:
     QuickInstaller_com.unity.services.levelplay_installRecorded:
       value: 2550581500
       flags: 0
-    RecentlyUsedSceneGuid-0:
-      value: 0009575303025a59585e592112215c44464f1e2b2e2976642f2a4936e6e3306e
-      flags: 0
-    RecentlyUsedSceneGuid-1:
-      value: 050951020651595d5b580d7345265b44134f1c7e7f297536747a4b60b1e1666a
-      flags: 0
-    RecentlyUsedSceneGuid-2:
-      value: 5602025401040b085b57557649770944444e1c7e7a7d77357e281e36b7e5666b
-      flags: 0
-    RecentlyUsedSceneGuid-3:
-      value: 000752575057590c5f085f7541720a4446164b782f7b2263757d4931b1b76439
-      flags: 0
-    RecentlyUsedSceneGuid-4:
-      value: 5406020054025d5a580c5a7b41215c44134e4b7a7f2b7f6179701c60e1b9353a
-      flags: 0
-    RecentlyUsedSceneGuid-5:
-<<<<<<< HEAD
-      value: 5a53040503565d0f545c082413700944144f192e2e2a23617f2c4432e0e26060
-      flags: 0
-    RecentlyUsedSceneGuid-6:
-      value: 51070c5701015a0b085e5b7144200644101641282d2d7467752f4b61e7b0663e
-      flags: 0
-=======
-      value: 51070c5701015a0b085e5b7144200644101641282d2d7467752f4b61e7b0663e
-      flags: 0
-    RecentlyUsedSceneGuid-6:
-      value: 0009575303025a59585e592112215c44464f1e2b2e2976642f2a4936e6e3306e
-      flags: 0
-    RecentlyUsedSceneGuid-7:
-      value: 0703005355040f0e0e570f2016770d44424e4f73797027347c7e1c61bab76468
-      flags: 0
->>>>>>> 65943349044066ee3f6078489c247ffe3ec4e13a
     vcSharedLogLevel:
       value: 0d5e400f0650
       flags: 0
@@ -51,7 +19,7 @@ EditorUserSettings:
   m_VCDebugCmd: 0
   m_VCDebugOut: 0
   m_SemanticMergeMode: 2
-  m_DesiredImportWorkerCount: 3
+  m_DesiredImportWorkerCount: 4
   m_StandbyImportWorkerCount: 2
   m_IdleImportWorkerShutdownDelay: 60000
   m_VCShowFailedCheckout: 1
