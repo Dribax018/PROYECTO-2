@@ -69,7 +69,7 @@ PrefabInstance:
       addedObject: {fileID: 287168224162859542}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c592b3596e8f4b5438970a6a31c653fe, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6172251222321914584}
+      addedObject: {fileID: 5259143338923942265}
   m_SourcePrefab: {fileID: 100100000, guid: c592b3596e8f4b5438970a6a31c653fe, type: 3}
 --- !u!1 &3075998097136358183 stripped
 GameObject:
@@ -97,30 +97,17 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &6172251222321914584
-Rigidbody:
+--- !u!114 &5259143338923942265
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3075998097136358183}
-  serializedVersion: 5
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbe12757b5336d64cab53687fb514258, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Lane
+  leftPoint: {fileID: 0}
+  rightPoint: {fileID: 0}

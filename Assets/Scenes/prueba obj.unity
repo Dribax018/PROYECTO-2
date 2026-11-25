@@ -2014,6 +2014,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 04bd69ec4f7c394448854bfc9facf43c, type: 2}
   - {fileID: 11400000, guid: 0ee998b30b96b284d84573a084b20174, type: 2}
   - {fileID: 11400000, guid: 73752b266901b5441ba5f3ba2ca2048d, type: 2}
+  - {fileID: 11400000, guid: 73752b266901b5441ba5f3ba2ca2048d, type: 2}
   safeStartRows: 10
   rowsToMaxDifficulty: 100
   maxSpeedMultiplier: 2
