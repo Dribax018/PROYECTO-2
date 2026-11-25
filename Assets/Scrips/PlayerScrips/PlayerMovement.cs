@@ -57,9 +57,7 @@ public class PlayerMovement : MonoBehaviour
             float diferencia = sizeOriginal.y - alturaAgachado;
 
             colliderJugador.size = new Vector3(sizeOriginal.x, alturaAgachado, sizeOriginal.z);
-            colliderJugador.center = new Vector3(centerOriginal.x,
-                                                 centerOriginal.y - diferencia / 2f,
-                                                 centerOriginal.z);
+            colliderJugador.center = new Vector3(centerOriginal.x,centerOriginal.y - diferencia / 2f,centerOriginal.z);
         }
         else
         {
