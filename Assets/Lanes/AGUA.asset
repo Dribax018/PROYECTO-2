@@ -22,7 +22,7 @@ MonoBehaviour:
   minObstacles: 0
   maxObstacles: 4
   vehiclePrefabs:
-  - {fileID: 3292861942400832217, guid: 129b53d4b162e1f4885bb16b02154fd4, type: 3}
+  - {fileID: 661091805037181511, guid: 3f04f2ddac5647f448a51b233b25d3c8, type: 3}
   speedRange: {x: 4, y: 7}
   spawnIntervalRange: {x: 1.5, y: 3}
   minGapUnits: 4
@@ -31,3 +31,5 @@ MonoBehaviour:
   logSpeedRange: {x: 2, y: 4}
   logSpawnIntervalRange: {x: 2, y: 3}
   logMinGapUnits: 5
+  enemyPrefab: {fileID: 0}
+  projectileHeight: 0.8
