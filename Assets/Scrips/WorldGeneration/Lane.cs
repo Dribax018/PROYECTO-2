@@ -80,27 +80,86 @@ public class Lane : MonoBehaviour
         }
     }
 
+    //private void SpawnObstacles(int safeColumn, int nextSafeColumn)
+    //{
+    //    if (config.obstaclePrefabs == null || config.obstaclePrefabs.Length == 0) return;
+    //    List<int> columns = new List<int>();
+    //    for (int c = -columnsEachSide; c <= columnsEachSide; c++)
+    //    {
+    //        if (c != safeColumn && c != nextSafeColumn) columns.Add(c);
+    //    }
+    //    int count = Mathf.Min(Random.Range(config.minObstacles, config.maxObstacles + 1), columns.Count);
+    //    for (int i = columns.Count - 1; i > 0; i--)
+    //    {
+    //        int j = Random.Range(0, i + 1);
+    //        (columns[i], columns[j]) = (columns[j], columns[i]);
+    //    }
+
+    //    for (int i = 0; i < count; i++)
+    //    {
+    //        GameObject prefab = config.obstaclePrefabs[Random.Range(0, config.obstaclePrefabs.Length)];
+    //        GameObject obstacle = Instantiate(prefab, transform);
+    //        Vector3 local = obstacle.transform.localPosition;
+    //        obstacle.transform.localPosition = new Vector3(columns[i] * tileSize, local.y, 0f);
+    //    }
+    //}
+
     private void SpawnObstacles(int safeColumn, int nextSafeColumn)
     {
-        if (config.obstaclePrefabs == null || config.obstaclePrefabs.Length == 0) return;
-        List<int> columns = new List<int>();
+        if (config.obstaclePrefabs == null ||
+            config.obstaclePrefabs.Length == 0)
+            return;
+
+ 
+        List<int> availableColumns = new List<int>();
+
         for (int c = -columnsEachSide; c <= columnsEachSide; c++)
         {
-            if (c != safeColumn && c != nextSafeColumn) columns.Add(c);
+
+            if (c == safeColumn || c == nextSafeColumn)
+                continue;
+
+            availableColumns.Add(c);
         }
-        int count = Mathf.Min(Random.Range(config.minObstacles, config.maxObstacles + 1), columns.Count);
-        for (int i = columns.Count - 1; i > 0; i--)
+
+
+        for (int i = availableColumns.Count - 1; i > 0; i--)
         {
             int j = Random.Range(0, i + 1);
-            (columns[i], columns[j]) = (columns[j], columns[i]);
+
+            (availableColumns[i], availableColumns[j]) =
+                (availableColumns[j], availableColumns[i]);
         }
+
+
+        int min = Mathf.Max(0, config.minObstacles);
+        int max = Mathf.Max(min, config.maxObstacles);
+
+        int count = Random.Range(min, max + 1);
+        count = Mathf.Min(count, availableColumns.Count);
 
         for (int i = 0; i < count; i++)
         {
-            GameObject prefab = config.obstaclePrefabs[Random.Range(0, config.obstaclePrefabs.Length)];
+            int column = availableColumns[i];
+
+            GameObject prefab = config.obstaclePrefabs[
+                Random.Range(0, config.obstaclePrefabs.Length)
+            ];
+
             GameObject obstacle = Instantiate(prefab, transform);
-            Vector3 local = obstacle.transform.localPosition;
-            obstacle.transform.localPosition = new Vector3(columns[i] * tileSize, local.y, 0f);
+
+            obstacle.transform.localPosition = new Vector3(
+                column * tileSize,
+                obstacle.transform.localPosition.y,
+                0f
+            );
+
+            // Rotación aleatoria para dar variedad visual
+            obstacle.transform.localRotation = Quaternion.Euler(
+                0f,
+                Random.Range(0, 4) * 90f,
+                0f
+            );
         }
     }
 
