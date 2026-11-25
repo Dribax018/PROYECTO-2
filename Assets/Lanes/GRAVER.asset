@@ -14,15 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LaneConfig
   type: 2
   lanePrefab: {fileID: -1834052280097807161, guid: c534a22b869281a47a1e37b62c3ecb38, type: 3}
-  weight: 3
+  weight: 2
   minRow: 8
-  minConsecutive: 2
+  minConsecutive: 3
   maxConsecutive: 5
   obstaclePrefabs:
   - {fileID: 3075998097136358183, guid: c835d2bc733195044a2c50bf4a4dec26, type: 3}
+  - {fileID: 4462548731216292295, guid: b7a4e4d16f1598f42be3266c4bc4b983, type: 3}
+  - {fileID: 5843788115477968016, guid: fd921887729d9ec45b91ab27d04b1abe, type: 3}
+  - {fileID: 3015836737332697454, guid: 3cd2d60452dcc034280ebcfb4cb81eef, type: 3}
   - {fileID: 3075998097136358183, guid: c835d2bc733195044a2c50bf4a4dec26, type: 3}
-  - {fileID: 3075998097136358183, guid: c835d2bc733195044a2c50bf4a4dec26, type: 3}
-  minObstacles: 7
+  minObstacles: 5
   maxObstacles: 15
   vehiclePrefabs: []
   speedRange: {x: 4, y: 7}
@@ -33,3 +35,5 @@ MonoBehaviour:
   logSpeedRange: {x: 2, y: 4}
   logSpawnIntervalRange: {x: 2, y: 3}
   logMinGapUnits: 5
+  enemyPrefab: {fileID: 0}
+  projectileHeight: 0.8
