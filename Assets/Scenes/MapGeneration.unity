@@ -1636,6 +1636,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 755974140}
   m_CullTransparentMesh: 1
+--- !u!65 &831685455 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 6532719883618908911, guid: 5b811e3759981264884c0c63a398180d, type: 3}
+  m_PrefabInstance: {fileID: 1738635594}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &878065972
 GameObject:
   m_ObjectHideFlags: 0
@@ -3609,11 +3614,15 @@ PrefabInstance:
     - target: {fileID: 4044629116538422825, guid: 5b811e3759981264884c0c63a398180d, type: 3}
       propertyPath: m_Camera
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 258916936}
     - target: {fileID: 4908803431866149153, guid: 5b811e3759981264884c0c63a398180d, type: 3}
       propertyPath: cameraFollow
       value: 
       objectReference: {fileID: 258916933}
+    - target: {fileID: 5054024184866016795, guid: 5b811e3759981264884c0c63a398180d, type: 3}
+      propertyPath: colliderJugador
+      value: 
+      objectReference: {fileID: 831685455}
     - target: {fileID: 7725371716142176908, guid: 5b811e3759981264884c0c63a398180d, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -4011,7 +4020,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2126855498}
+  m_Father: {fileID: 2091350730}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4186,6 +4195,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 371279311}
+  - {fileID: 1960514260}
   - {fileID: 129932606}
   m_Father: {fileID: 2126855498}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4487,7 +4497,6 @@ RectTransform:
   - {fileID: 2091350730}
   - {fileID: 755974141}
   - {fileID: 1355196315}
-  - {fileID: 1960514260}
   - {fileID: 330830767}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
