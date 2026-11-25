@@ -608,6 +608,7 @@ GameObject:
   - component: {fileID: 1210841313}
   - component: {fileID: 1210841312}
   - component: {fileID: 1210841311}
+  - component: {fileID: 1210841314}
   m_Layer: 5
   m_Name: Boton ajustes
   m_TagString: Untagged
@@ -717,6 +718,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1210841309}
   m_CullTransparentMesh: 1
+--- !u!114 &1210841314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1210841309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 354dcf78dcda94040a7a31d1bd037d78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CambiarEscena
+  nombreEscena: CONTROLES_IINICIAL 1
 --- !u!1 &1301734816
 GameObject:
   m_ObjectHideFlags: 0
@@ -1232,6 +1246,7 @@ GameObject:
   - component: {fileID: 1470302743}
   - component: {fileID: 1470302742}
   - component: {fileID: 1470302741}
+  - component: {fileID: 1470302744}
   m_Layer: 5
   m_Name: creditos
   m_TagString: Untagged
@@ -1341,6 +1356,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1470302739}
   m_CullTransparentMesh: 1
+--- !u!114 &1470302744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470302739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 354dcf78dcda94040a7a31d1bd037d78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CambiarEscena
+  nombreEscena: SONIDO_IINICIAL 2
 --- !u!1 &1821769483
 GameObject:
   m_ObjectHideFlags: 0
